@@ -13,15 +13,15 @@ function Relogio() {
             setHoraAtual(`${horas}:${minutos}:${segundos}`);
         };
 
-        atualizarHora(); // Atualiza imediatamente ao carregar
+        atualizarHora(); 
         const intervalo = setInterval(atualizarHora, 1000);
 
-        return () => clearInterval(intervalo); // Limpa o intervalo ao desmontar
+        return () => clearInterval(intervalo); 
     }, []);
 
     return (
         <div>
-            <h1>Hora Atual:</h1>
+            <h1>Meu relógio</h1>
             <h2>{horaAtual}</h2>
         </div>
     );
