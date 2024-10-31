@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Minhasrotas from './Minhasrotas';
+import MinhasRotas from './Minhasrotas';
  
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
