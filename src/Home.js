@@ -7,7 +7,7 @@ count Home = () => {
       <h1> Página Inicial</h1>
       <nav>
           <ul>
-              <li><Link to"/Atividade1"> Atividade 1</Link></li>
+              <li><Link to="/Atividade1"> Atividade 1</Link></li>
           <ul>
       </nav>
     </div>
