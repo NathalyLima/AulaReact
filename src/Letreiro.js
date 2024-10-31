@@ -1,46 +1,76 @@
 import React, { useState, useEffect } from 'react';
-import ReactDOM from 'react-dom';
+ 
+function Letreiro() {
 
-function MeuElemento({ texto }) {
-    return (
-        <div>
-            <h1>{texto}</h1>
-        </div>
-    );
-}
+    const texto = "Venha estudar na FATEC";
 
-function App() {
-    const frase = 'Venha estudar na FATEC!';
-    const [textoAtual, setTextoAtual] = useState('');
+    const [displayedText, setDisplayedText] = useState("");
+
+    const [isDeleting, setIsDeleting] = useState(false);
+
     const [index, setIndex] = useState(0);
-    const [apagando, setApagando] = useState(false);
-
+ 
     useEffect(() => {
-        const tick = () => {
-            if (!apagando && index < frase.length) {
-                setTextoAtual((prev) => prev + frase[index]);
-                setIndex((prev) => prev + 1);
-            } else if (apagando && index > 0) {
-                setTextoAtual((prev) => prev.slice(0, -1));
-                setIndex((prev) => prev - 1);
+
+        const intervalo = setInterval(() => {
+
+            if (isDeleting) {
+
+                setDisplayedText((prev) => prev.slice(0, -1));
+
+                if (displayedText.length === 0) {
+
+                    setIsDeleting(false);
+
+                    setIndex(0);
+
+                }
+
+            } else {
+
+                setDisplayedText((prev) => prev + texto[index]);
+
+                if (index === texto.length - 1) {
+
+                    setIsDeleting(true);
+
+                }
+
             }
+ 
+            setIndex((prev) => (isDeleting ? prev : prev + 1) % texto.length);
 
-            if (index === frase.length) {
-                setTimeout(() => setApagando(true), 1000);
-            }
+        }, isDeleting ? 150 : 200);
+ 
+        return () => clearInterval(intervalo);
 
-            if (index === 0 && apagando) {
-                setApagando(false);
-            }
-        };
+    }, [index, displayedText, isDeleting]);
+ 
+    return (
+<>
+<h1>Meu Letreiro</h1>
+ 
+            <h1 style={{
 
-        const interval = setInterval(tick, 150);
-        return () => clearInterval(interval);
-    }, [index, apagando, frase]);
+                fontSize: '2em',
 
-    return <MeuElemento texto={textoAtual} />;
+                whiteSpace: 'nowrap',
+
+                overflow: 'hidden',
+
+                borderRight: '2px solid black',
+
+                animation: 'caret 0.8s infinite'
+
+            }}>
+
+                {displayedText}
+</h1>
+</>
+
+    );
+
 }
-
-const container = document.getElementById('root');
-const root = ReactDOM.createRoot(container);
-root.render(<App />);
+ 
+export default Letreiro;
+ 
