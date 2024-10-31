@@ -9,7 +9,7 @@ function Atividade1() {
       <h1>Atividade 1</h1>
       <Relogio />
       <Letreiro />
-      <Link to"/"> Voltar para a Home</Link>
+      <Link to="/"> Voltar para a Home</Link>
     </>
   );
 }
