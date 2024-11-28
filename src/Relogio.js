@@ -21,7 +21,7 @@ function Relogio() {
 
     return (
         <div>
-            <h1>Meu relógio</h1>
+            <h2>Meu relógio</h2>
             <h2>{horaAtual}</h2>
         </div>
     );

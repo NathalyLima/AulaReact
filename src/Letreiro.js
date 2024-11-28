@@ -48,7 +48,7 @@ function Letreiro() {
  
     return (
 <>
-<h1>Meu Letreiro</h1>
+<h2>Meu Letreiro</h2>
  
             <h1 style={{
 
